@@ -41,4 +41,14 @@
 
   build {
     sources = ["source.amazon-ebs.quick-start"]
+    
+    provisioner "shell" {
+      environment_vars = [
+        "FOO=Packer in Github Actions.",
+      ]
+      inline = [
+        "echo Adding file to Docker Container",
+        "echo \"Automation is $FOO\" > example.txt",
+      ]
+    }
   }
